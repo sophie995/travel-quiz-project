@@ -1,120 +1,343 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>旅遊測驗與抽獎</title>
-    <style>
-        /* 基礎樣式，讓頁面看起來更整潔 */
-        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #333; }
-        .quiz-section, .form-section { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
-        label { display: block; margin-bottom: 8px; font-weight: bold; }
-        input[type="text"], input[type="email"] { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        button { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
-        button:hover { background-color: #0056b3; }
-        .hidden { display: none; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>測測你的旅行風格：理想旅伴測驗 | 去趣旅行</title>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS 變數定義：使用指定的配色 */
+        :root {
+            --primary-blue: #00AEDC; /* 主色：深青色 (#00AEDC) */
+            --accent-yellow: #F9BE00; /* 強調色：亮黃色 (#F9BE00) */
+            --text-dark: #1C1C1C;
+            --bg-light: #FAFAFA;
+            --font-main: 'Zen Kaku Gothic Antique', 'Microsoft YaHei', sans-serif;
+        }
+
+        /* 全域樣式 */
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 12px;
+        }
+
+        /* 頁首與 LOGO */
+        header {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            background-color: var(--primary-blue);
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+        .logo {
+            font-size: 24px; 
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* 內容區塊 */
+        .section {
+            display: none; 
+            padding: 20px 0;
+        }
+        .section.active {
+            display: block;
+        }
+
+        /* 進度條 */
+        .progress-bar {
+            height: 8px;
+            background-color: #E0E0E0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 0;
+            background-color: var(--accent-yellow);
+            transition: width 0.3s ease-in-out;
+        }
+
+        /* 測驗題目與選項 */
+        .question-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .option {
+            display: block;
+            background-color: var(--bg-light);
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 2px solid #D0D0D0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+        }
+
+        .option.selected {
+            background-color: #E8F5FF; 
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 5px rgba(249, 190, 0, 0.5);
+        }
+
+        /* 按鈕 */
+        .btn-next, .btn-submit {
+            padding: 12px 25px;
+            background-color: var(--accent-yellow);
+            color: var(--text-dark);
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .btn-next:hover, .btn-submit:hover {
+            background-color: #E6AD00;
+        }
+
+        /* 結果區塊 */
+        .result-title {
+            color: var(--primary-blue);
+            font-size: 24px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .result-type {
+            color: var(--accent-yellow);
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .result-description, .result-advice {
+            padding: 15px;
+            border-left: 5px solid var(--primary-blue);
+            margin-bottom: 15px;
+            background-color: var(--bg-light);
+        }
+
+        /* 抽獎表單區塊 */
+        .prize-section {
+            background-color: #E8F5FF; 
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+        .prize-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        .prize-list li {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .prize-list li strong {
+            color: var(--accent-yellow);
+        }
+        .prize-note {
+            font-size: 14px;
+            color: #D32F2F; 
+            font-weight: 700;
+            margin-top: 15px;
+        }
+
+        /* 表單樣式 */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"] {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+            font-family: var(--font-main);
+        }
+        
+        /* 隱私權勾選 */
+        .privacy-check {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .privacy-check a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .privacy-check input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        /* 頁尾 */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 12px;
+            color: #777;
+            margin-top: 40px;
+            border-top: 1px solid #EEE;
+        }
+        footer a {
+            color: var(--primary-blue);
+            margin: 0 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>🌍 旅遊知識測驗</h1>
+    <header>
+        <div class="logo">chicTrip 去趣旅行</div>
+        <h1>測測你的旅行風格：你是哪一種「理想旅伴」？</h1>
+        <h2>僅需 3 分鐘，10 題核心問答，揭開你的旅行 DNA！</h2>
+    </header>
 
-    <div id="quiz-container" class="quiz-section">
-        <p>請回答以下問題...</p>
-        <p>測驗已完成！</p>
-        <button id="show-form-btn">進入抽獎表單</button>
-    </div>
+    <div class="container">
+        <div id="quiz-section" class="section active">
+            <p>接下來，請根據你最真實的直覺選擇答案，沒有對錯之分。</p>
+            <div class="progress-bar"><div id="progress-fill" class="progress-bar-fill"></div></div>
+            
+            <div id="question-container">
+                </div>
+            
+            <button id="next-button" class="btn-next" disabled>下一題</button>
+        </div>
 
-    <div id="form-container" class="form-section hidden">
-        <h2>🎉 恭喜完成測驗！</h2>
-        <p>感謝您的參與！只要完成下方資訊填寫並提交，即可獲得抽獎資格。</p>
+        <div id="result-section" class="section">
+            <h3 class="result-title">【測驗結果揭曉！】</h3>
+            <div id="result-type" class="result-type"></div>
+            
+            <div id="result-detail">
+                </div>
 
-        <form id="lottery-form">
-            <label for="name">中文姓名 (需同護照)</label>
-            <input type="text" id="name" name="name" required>
+            <div class="prize-section">
+                <h3 class="prize-title">🎊 恭喜完成測驗！免費參加【豪華旅行抽獎活動】！</h3>
+                <p>感謝您的參與！只要完成下方資訊填寫並提交，即可獲得抽獎資格。</p>
 
-            <label for="email">電子郵件 (Email)</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="phone">聯絡電話</label>
-            <input type="text" id="phone" name="phone" required>
+                <ul class="prize-list">
+                    <li>🏆 **頭獎：** <strong style="color: var(--accent-yellow);">ANA 東京來回機票 (共 3 組)</strong></li>
+                    <li>🎁 **二獎：** 去趣旅行周邊商品 (共 30 名)</li>
+                    <li>✨ **三獎：** 和泰 Points 300 點 (共 20 名)</li>
+                </ul>
 
-            <p style="font-size: 0.8em; color: #666;">*我已閱讀並同意相關隱私政策。</p>
-            <button type="submit">同意並提交資料</button>
-            <p id="message-area" style="margin-top: 10px; color: red;"></p>
-        </form>
-    </div>
-</div>
+                <p class="prize-note">※ 參加活動需同意訂閱 ANA 電子報，中獎者將以電子報訂閱信箱進行通知。</p>
 
-<script>
-    // ************************************************
-    // ** ✅ Apps Script Web App URL 已成功嵌入 **
-    // ************************************************
-    const APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby2wuZ4cUXTZDLCUEgSpQ8WKO1SuKTvrTEBRnWSyqGwI63TsmIfFqYzmtWybWRXKUKf4A/exec";
+                <hr style="border-top: 1px solid #B0E0FF; margin: 20px 0;">
 
-    const formContainer = document.getElementById('form-container');
-    const quizContainer = document.getElementById('quiz-container');
-    const showFormBtn = document.getElementById('show-form-btn');
-    const lotteryForm = document.getElementById('lottery-form');
-    const messageArea = document.getElementById('message-area');
+                <form id="lottery-form">
+                    <h3 class="prize-title" style="color: var(--text-dark);">填寫抽獎聯絡方式</h3>
+                    <div class="form-group">
+                        <label for="name">中文姓名 (需同護照):</label>
+                        <input type="text" id="name" name="name" required> 
+                    </div>
+                    <div class="form-group">
+    在 JavaScript 提交邏輯中，**為了確保資料能被 Apps Script 正確接收**，您需要稍微調整 `fetch` 的 `body` 傳輸方式。 Apps Script 預期的是 JSON 格式，而不是 `FormData` 物件。
 
-    showFormBtn.addEventListener('click', () => {
-        quizContainer.classList.add('hidden');
-        formContainer.classList.remove('hidden');
-    });
+**以下是您需要調整的 JavaScript 程式碼片段：**
 
-    lotteryForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // 阻止表單預設提交行為
-        
-        messageArea.textContent = "資料提交中，請稍候...";
-        
-        // 收集表單數據
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-        };
+```javascript
+        // ** GAS 提交邏輯：處理表單提交並發送到 Apps Script **
+        lotteryForm.addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            // 收集表單數據為 JSON 物件
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+            };
+            
+            // 禁用按鈕，防止重複提交
+            const submitButton = document.querySelector('.btn-submit');
+            submitButton.disabled = true;
+            submitButton.textContent = '提交中...';
 
-        // 提交數據到 Apps Script
-        fetch(APP_SCRIPT_URL, {
-            method: 'POST',
-            body: JSON.stringify(formData), // 傳輸 JSON 格式，這是 Apps Script doPost 預期的方式
-            headers: {
-                'Content-Type': 'application/json' 
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                // 如果是 404, 500 等錯誤，會直接拋出
-                throw new Error('HTTP 錯誤，狀態碼: ' + response.status);
-            }
-            return response.json(); // 將回傳內容解析為 JSON
-        })
-        .then(data => {
-            // 處理 Apps Script 成功回傳的 JSON 結構 (result: success 或 error)
-            if (data.result === 'success') {
-                messageArea.style.color = 'green';
-                messageArea.textContent = "✅ 資料已成功提交！感謝您的參與！";
-                lotteryForm.reset(); 
-                
-            } else {
-                // 這是 Apps Script 腳本內部拋出的錯誤 (例如: 找不到工作表)
-                messageArea.style.color = 'red';
-                messageArea.textContent = `❌ 提交失敗 (伺服器錯誤): ${data.message}`;
-            }
-        })
-        .catch(error => {
-            // 網路層級或 JSON 解析失敗 (常見於 Apps Script 授權/部署錯誤)
-            messageArea.style.color = 'red';
-            console.error('Fetch 錯誤:', error);
-            messageArea.textContent = "❌ 提交發生錯誤，請檢查 Web App 部署狀態與權限。";
-        });
-    });
-
-</script>
-
-</body>
-</html>
+            // 使用 Fetch API 提交數據到 Google Apps Script
+            fetch(gasScriptURL, {
+                method: 'POST',
+                // 傳送 JSON 格式
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json' // 告知伺服器傳送的是 JSON
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('HTTP 錯誤，狀態碼: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // 檢查 Apps Script 返回的結果
+                if (data.result === 'success') {
+                    // 提交成功，顯示感謝訊息
+                    const prizeSection = document.querySelector('.prize-section');
+                    prizeSection.innerHTML = `
+                        <h3 class="prize-title" style="color: green;">✅ 資料已成功提交！</h3>
+                        <p>感謝您的參與，您已成功獲得抽獎資格。請隨時留意您的信箱通知。</p>
+                    `;
+                } else {
+                    // Apps Script 伺服器端錯誤 (例如找不到試算表)
+                    alert(`提交失敗，請檢查 Apps Script 設置：${data.message}`);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // 網路連線或 CORS 錯誤
+                alert('提交發生錯誤，請檢查網路連接或 Web App URL 是否正確。');
+            })
+            .finally(() => {
+                submitButton.disabled = false;
+                submitButton.textContent = '同意提交 (取得抽獎資格)';
+            });
+        });
