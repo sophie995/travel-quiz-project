@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>測測你的旅行風格：理想旅伴測驗 | 去趣chicTrip</title>
+    <title>測測你的旅行風格：理想旅伴測驗 | 去趣旅行</title>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* CSS 變數定義：使用指定的配色 */
@@ -265,9 +265,9 @@
                 <p>感謝您的參與！只要完成下方資訊填寫並提交，即可獲得抽獎資格。</p>
 
                 <ul class="prize-list">
-                    <li>🏆 頭獎： <strong style="color: var(--accent-yellow);">ANA 東京來回機票 (共 3 組)</strong></li>
-                    <li>🎁 二獎： 去趣旅行周邊商品 (共 30 名)</li>
-                    <li>✨ 三獎： 和泰 Points 300 點 (共 20 名)</li>
+                    <li>🏆 **頭獎：** <strong style="color: var(--accent-yellow);">ANA 東京來回機票 (共 3 組)</strong></li>
+                    <li>🎁 **二獎：** 去趣旅行周邊商品 (共 30 名)</li>
+                    <li>✨ **三獎：** 和泰 Points 300 點 (共 20 名)</li>
                 </ul>
 
                 <p class="prize-note">※ 參加活動需同意訂閱 ANA 電子報，中獎者將以電子報訂閱信箱進行通知。</p>
@@ -302,7 +302,7 @@
     </div>
 
     <footer>
-        版權所有 © 2025 去趣chicTrip.
+        版權所有 © 2025 去趣旅行.
         <a href="#">服務條款</a> | <a href="#" onclick="alert('此處應彈出或導向隱私權政策全文'); return false;">隱私權政策</a>
     </footer>
 
@@ -439,29 +439,13 @@
             const submitButton = document.querySelector('.btn-submit');
             submitButton.disabled = true;
             submitButton.textContent = '提交中...';
-            
-            // =======================================================
-            // *** 【關鍵修正】重新加入 resultType 參數到 formData 中 ***
-            // =======================================================
-            // 1. 從結果顯示區獲取測驗結果文字
-            const resultTypeText = document.getElementById('result-type').textContent;
-            // 2. 進行簡單清理，提取類型名稱
-            const resultType = resultTypeText.replace('你是【', '').replace('】類型！', '').trim();
-            // 3. 將結果作為一個新的欄位 'resultType' 附加到提交數據中
-            formData.append('resultType', resultType);
-            
+
             // 使用 Fetch API 提交數據到 Google Apps Script
             fetch(gasScriptURL, {
                 method: 'POST',
                 body: formData,
             })
-            .then(response => {
-                // Apps Script 應返回 JSON 格式
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 if (data.result === 'success') {
                     // 提交成功，顯示感謝訊息
@@ -471,9 +455,23 @@
                         <p>感謝您的參與，您已成功獲得抽獎資格。請隨時留意您的信箱通知。</p>
                     `;
                 } else {
-                    // 提交失敗，顯示 Apps Script 返回的錯誤訊息
-                    alert(`提交失敗: ${data.message || '請檢查您的 Apps Script 部署和權限設定。'}`);
+                    alert('提交失敗，請稍後再試。');
                 }
             })
             .catch(error => {
-                console.error('Error:', error
+                console.error('Error:', error);
+                alert('提交發生錯誤，請檢查網路連接。');
+            })
+            .finally(() => {
+                // 恢復按鈕狀態 (如果提交成功，此行不會執行，因為 prizeSection 內容已被替換)
+                submitButton.disabled = false;
+                submitButton.textContent = '同意提交 (取得抽獎資格)';
+            });
+        });
+
+        // 首次載入
+        renderQuestion();
+    </script>
+
+</body>
+</html>
