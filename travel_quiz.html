@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>測測你的旅行風格：理想旅伴測驗 | 去趣</title>
+    <title>測測你的旅行風格：理想旅伴測驗 | 去趣旅行</title>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -28,7 +28,7 @@
             width: 100%;
             max-width: 700px;
             background-color: white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             padding: 30px;
             margin: 20px 0;
             border-radius: 12px;
@@ -41,327 +41,243 @@
             color: white;
             margin-bottom: 20px;
         }
-        h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        h2 {
-            font-size: 18px;
-            font-weight: 400;
-            opacity: 0.8;
-        }
-        .logo {
-            font-size: 24px; 
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .section {
-            display: none; 
-            padding: 20px 0;
-        }
-        .section.active {
-            display: block;
-        }
-        .progress-bar {
-            height: 8px;
-            background-color: #E0E0E0;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-        .progress-bar-fill {
-            height: 100%;
-            width: 0;
-            background-color: var(--accent-yellow);
-            transition: width 0.3s ease-in-out;
-        }
-        .question-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--text-dark);
-        }
-        .option {
-            display: block;
-            background-color: var(--bg-light);
-            padding: 15px;
-            margin-bottom: 10px;
-            border: 2px solid #D0D0D0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .option:hover {
-            border-color: var(--primary-blue);
-        }
-        .option.selected {
-            background-color: #E8F5FF; 
-            border-color: var(--accent-yellow);
-            box-shadow: 0 0 5px rgba(249, 190, 0, 0.5);
-        }
-        .btn-next, .btn-submit {
-            padding: 12px 25px;
-            background-color: var(--accent-yellow);
-            color: var(--text-dark);
-            font-size: 18px;
-            font-weight: 700;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            margin-top: 20px;
-            width: 100%;
-        }
-        .btn-next:hover, .btn-submit:hover {
-            background-color: #E6AD00;
-        }
-        .result-title {
-            color: var(--primary-blue);
-            font-size: 24px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .result-type {
-            color: var(--accent-yellow);
-            font-size: 32px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .result-description, .result-advice {
-            padding: 15px;
-            border-left: 5px solid var(--primary-blue);
-            margin-bottom: 15px;
-            background-color: var(--bg-light);
-        }
-        .prize-section {
-            background-color: #E8F5FF; 
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 30px;
-        }
-        .prize-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary-blue);
-            margin-bottom: 15px;
-        }
-        .prize-list li {
-            font-size: 16px;
-            margin-bottom: 8px;
-        }
-        .prize-list li strong {
-            color: var(--accent-yellow);
-        }
-        .prize-note {
-            font-size: 14px;
-            color: #D32F2F; 
-            font-weight: 700;
-            margin-top: 15px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"] {
-            width: 95%;
-            padding: 10px;
-            border: 1px solid #CCC;
-            border-radius: 5px;
-            font-family: var(--font-main);
-        }
-        .privacy-check {
-            font-size: 14px;
-            margin-top: 20px;
-        }
-        .privacy-check a {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 700;
-        }
-        .privacy-check input[type="checkbox"] {
-            margin-right: 5px;
-        }
-        footer {
-            width: 100%;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 12px;
-            color: #777;
-            margin-top: 40px;
-            border-top: 1px solid #EEE;
-        }
-        footer a {
-            color: var(--primary-blue);
-            margin: 0 10px;
-        }
+        h1 { font-size: 28px; font-weight:700; margin-bottom:5px; }
+        h2 { font-size: 18px; font-weight:400; opacity:0.8; }
+        .logo { font-size:24px; font-weight:700; margin-bottom:10px; }
+        .section { display:none; padding:20px 0; }
+        .section.active { display:block; }
+        .progress-bar { height:8px; background-color:#E0E0E0; border-radius:4px; margin-bottom:20px; overflow:hidden; }
+        .progress-bar-fill { height:100%; width:0; background-color: var(--accent-yellow); transition: width 0.3s ease-in-out; }
+        .question-title { font-size:20px; font-weight:700; margin-bottom:15px; color: var(--text-dark); }
+        .option { display:block; background-color: var(--bg-light); padding:15px; margin-bottom:10px; border:2px solid #D0D0D0; border-radius:8px; cursor:pointer; transition:all 0.2s ease; }
+        .option:hover { border-color: var(--primary-blue); }
+        .option.selected { background-color:#E8F5FF; border-color: var(--accent-yellow); box-shadow:0 0 5px rgba(249,190,0,0.5); }
+        .btn-next, .btn-submit { padding:12px 25px; background-color: var(--accent-yellow); color: var(--text-dark); font-size:18px; font-weight:700; border:none; border-radius:8px; cursor:pointer; transition: background-color 0.2s; margin-top:20px; width:100%; }
+        .btn-next:hover, .btn-submit:hover { background-color:#E6AD00; }
+        .result-title { color: var(--primary-blue); font-size:24px; font-weight:700; text-align:center; margin-bottom:10px; }
+        .result-type { color: var(--accent-yellow); font-size:32px; font-weight:700; text-align:center; margin-bottom:20px; }
+        .result-description, .result-advice { padding:15px; border-left:5px solid var(--primary-blue); margin-bottom:15px; background-color: var(--bg-light); }
+        .prize-section { background-color:#E8F5FF; padding:30px; border-radius:10px; margin-top:30px; }
+        .prize-title { font-size:22px; font-weight:700; color: var(--primary-blue); margin-bottom:15px; }
+        .prize-list li { font-size:16px; margin-bottom:8px; }
+        .prize-list li strong { color: var(--accent-yellow); }
+        .prize-note { font-size:14px; color:#D32F2F; font-weight:700; margin-top:15px; }
+        .form-group { margin-bottom:15px; }
+        .form-group label { display:block; font-weight:700; margin-bottom:5px; }
+        .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="tel"] { width:95%; padding:10px; border:1px solid #CCC; border-radius:5px; font-family: var(--font-main); }
+        .privacy-check { font-size:14px; margin-top:20px; }
+        .privacy-check a { color: var(--primary-blue); text-decoration:none; font-weight:700; }
+        .privacy-check input[type="checkbox"] { margin-right:5px; }
+        footer { width:100%; text-align:center; padding:20px 0; font-size:12px; color:#777; margin-top:40px; border-top:1px solid #EEE; }
+        footer a { color: var(--primary-blue); margin:0 10px; }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">去趣chicTrip</div>
-        <h1>測測你的旅行風格：你是哪一種「理想旅伴」？</h1>
-        <h2>僅需 3 分鐘，10 題核心問答，揭開你的旅行 DNA！</h2>
-    </header>
 
-    <div class="container">
-        <div id="quiz-section" class="section active">
-            <p>接下來，請根據你最真實的直覺選擇答案，沒有對錯之分。</p>
-            <div class="progress-bar"><div id="progress-fill" class="progress-bar-fill"></div></div>
-            <div id="question-container"></div>
-            <button id="next-button" class="btn-next" disabled>下一題</button>
-        </div>
+<header>
+    <div class="logo">chicTrip 去趣旅行</div>
+    <h1>測測你的旅行風格：你是哪一種「理想旅伴」？</h1>
+    <h2>僅需 3 分鐘，10 題核心問答，揭開你的旅行 DNA！</h2>
+</header>
 
-        <div id="result-section" class="section">
-            <h3 class="result-title">【測驗結果揭曉！】</h3>
-            <div id="result-type" class="result-type"></div>
-            <div id="result-detail"></div>
-
-            <div class="prize-section">
-                <h3 class="prize-title">🎊 恭喜完成測驗！免費參加【豪華旅行抽獎活動】！</h3>
-                <p>感謝您的參與！只要完成下方資訊填寫並提交，即可獲得抽獎資格。</p>
-                <ul class="prize-list">
-                    <li>🏆 <strong>頭獎：</strong> ANA 東京來回機票 (共 3 組)</li>
-                    <li>🎁 二獎：去趣旅行周邊商品 (共 30 名)</li>
-                    <li>✨ 三獎：和泰 Points 300 點 (共 20 名)</li>
-                </ul>
-                <p class="prize-note">※ 參加活動需同意訂閱 ANA 電子報，中獎者將以電子報訂閱信箱通知。</p>
-                <hr style="border-top: 1px solid #B0E0FF; margin: 20px 0;">
-                <form id="lottery-form">
-                    <h3 class="prize-title" style="color: var(--text-dark);">填寫抽獎聯絡方式</h3>
-                    <div class="form-group">
-                        <label for="name">中文姓名 (需同護照):</label>
-                        <input type="text" id="name" name="name" required> 
-                    </div>
-                    <div class="form-group">
-                        <label for="email">郵件信箱:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">聯繫電話:</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="privacy-check">
-                        <input type="checkbox" id="privacy-agree" required>
-                        <label for="privacy-agree">我已閱讀並同意 <a href="#" onclick="alert('此處應彈出或導向隱私權條款全文'); return false;">隱私權條款</a>，並同意**訂閱 ANA 電子報**以完成活動參加資格。</label>
-                    </div>
-                    <button type="submit" class="btn-submit">同意提交 (取得抽獎資格)</button>
-                </form>
-            </div>
-        </div>
+<div class="container">
+    <div id="quiz-section" class="section active">
+        <p>接下來，請根據你最真實的直覺選擇答案，沒有對錯之分。</p>
+        <div class="progress-bar"><div id="progress-fill" class="progress-bar-fill"></div></div>
+        <div id="question-container"></div>
+        <button id="next-button" class="btn-next" disabled>下一題</button>
     </div>
 
-    <footer>
-        版權所有 © 2025 去趣chicTrip.
-        <a href="#">服務條款</a> | <a href="#" onclick="alert('此處應彈出或導向隱私權政策全文'); return false;">隱私權政策</a>
-    </footer>
+    <div id="result-section" class="section">
+        <h3 class="result-title">【測驗結果揭曉！】</h3>
+        <div id="result-type" class="result-type"></div>
+        <div id="result-detail"></div>
 
-    <script>
-        const gasScriptURL = "https://script.google.com/macros/s/AKfycbxyYhR04jcAQIvMuL-6FgZLRBf5CYVTSLlaLnBfUjgLVdG6nnLA5fytsBEP0cQWmg-PtA/exec";
+        <div class="prize-section">
+            <h3 class="prize-title">🎊 恭喜完成測驗！免費參加【豪華旅行抽獎活動】！</h3>
+            <p>感謝您的參與！只要完成下方資訊填寫並提交，即可獲得抽獎資格。</p>
+            <ul class="prize-list">
+                <li>🏆 <strong>頭獎：</strong> ANA 東京來回機票 (共 3 組)</li>
+                <li>🎁 二獎：去趣旅行周邊商品 (共 30 名)</li>
+                <li>✨ 三獎：和泰 Points 300 點 (共 20 名)</li>
+            </ul>
+            <p class="prize-note">※ 參加活動需同意訂閱 ANA 電子報，中獎者將以電子報訂閱信箱進行通知。</p>
 
-        const questions = [
-            { id: 1, title: "Q1: 在規劃一趟期待已久的旅程時，你會：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 優先訂好最刺激、最特別的活動", "B. 仔細列出每日行程、交通方式", "C. 研究當地高評價的美食餐廳和酒吧", "D. 查詢當地的歷史文化、博物館"] },
-            { id: 2, title: "Q2: 你在旅程中對「時間」的掌握度是：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 隨性，邊走邊看，遲到也沒關係", "B. 嚴格，一切按表定時間進行", "C. 寬鬆，只要能吃到飯、買到東西就好", "D. 彈性，會因天氣或意外的風景而調整"] },
-            { id: 3, title: "Q3: 旅途中的住宿地點，你最重視什麼？", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 最好是帳篷、民宿或特色膠囊旅館", "B. 交通便利、設施齊全、提供 Wi-Fi", "C. 擁有美麗的泳池、奢華的浴缸", "D. 靠近市中心或歷史古城區"] },
-            { id: 4, title: "Q4: 你的旅費預算分配通常是：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 大部分花在體驗活動和紀念品上", "B. 主要花在交通和保險，盡量節省", "C. 大部分花在美食、購物和享受設施", "D. 願意花錢在導遊或深度遊覽行程上"] },
-            { id: 5, title: "Q5: 當旅途中遇到突發狀況 (如：航班延誤) 時，你會：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 感到興奮，這才是旅行的樂趣所在！", "B. 立即打開手機，尋找所有可能的解決方案", "C. 先找個咖啡廳休息，把不愉快拋諸腦後", "D. 趁機去附近看看意外的風景或景點"] },
-            { id: 6, title: "Q6: 你在旅行中拍照的重點是：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 獨特的風景或挑戰成功的那一刻", "B. 所有重要的地標，整齊排列在相簿中", "C. 美食擺盤、時尚的穿搭、網美景點", "D. 具有當地特色的人文街景和建築細節"] },
-            { id: 7, title: "Q7: 如果一天中沒有安排任何行程，你會：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 隨便找個地方探險或嘗試當地交通", "B. 焦慮不安，立刻上網搜尋下一步怎麼辦", "C. 睡到自然醒，然後享受一頓豐盛的早午餐", "D. 找間書店或咖啡廳，觀察當地人的生活"] },
-            { id: 8, title: "Q8: 關於行程中的「餐飲」，你的態度是：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 吃當地人推薦的街邊攤或特色小店", "B. 找附近最方便、快速解決的一餐", "C. 優先選擇評價高、環境好的餐廳或米其林", "D. 嘗試當地傳統食物，並了解其製作過程"] },
-            { id: 9, title: "Q9: 旅行前，你最喜歡看哪一類型的資料？", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 戶外探險 Youtuber 或背包客分享", "B. 旅遊達人的攻略、Excel 行程表範本", "C. 旅遊雜誌的飯店開箱或購物指南", "D. 國家地理頻道、歷史紀錄片"] },
-            { id: 10, title: "Q10: 結束一天的行程後，你的夜晚時間是：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 到處走走，尋找下一天的驚喜", "B. 整理照片、確認明天的交通時間", "C. 享受飯店設施，例如泡澡或去酒吧", "D. 寫下今天的見聞，整理文化筆記"] }
-        ];
+            <hr style="border-top:1px solid #B0E0FF; margin:20px 0;">
 
-        const results = {
-            'A': { type: 'A. 刺激的冒險家', desc: "未知才是你旅行最大的樂趣。你不喜歡被時間表束縛，比起舒適的飯店，你更愛充滿故事的青旅或露營...", advice: "給你的建議：試著在出發前至少確認好第一晚的住宿和基本的保險資訊，讓冒險更有保障！" },
-            'B': { type: 'B. 嚴謹的規劃控', desc: "你是旅行團體中的靈魂人物，所有行程都必須在你的 Excel 表格中，一切都在掌握之中...", advice: "給你的建議：試著在你的行程表上留出一個小時的「空白時間」，給自己一個隨心所欲的機會。" },
-            'C': { type: 'C. 盡情的享樂主義者', desc: "旅行對你來說，是從日常壓力中解脫的最好方式。你喜歡優質的住宿、高水準的美食和購物體驗...", advice: "給你的建議：下次可以試著將「美食」的預算，分配一部分到「獨特體驗」上，讓快樂延續到回家後。" },
-            'D': { type: 'D. 深度文化觀察者', desc: "你對文化、人文、歷史的熱情勝過一般旅人，你喜歡博物館、老街、當地藝術活動...", advice: "給你的建議：可以挑戰用當地語言與人交流，這將讓你的旅行更有深度與趣味。" }
-        };
+            <form id="lottery-form">
+                <h3 class="prize-title" style="color: var(--text-dark);">填寫抽獎聯絡方式</h3>
+                <div class="form-group">
+                    <label for="name">中文姓名 (需同護照):</label>
+                    <input type="text" id="name" name="name" required> 
+                </div>
+                <div class="form-group">
+                    <label for="email">郵件信箱:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">聯繫電話:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="privacy-check">
+                    <input type="checkbox" id="privacy-agree" required>
+                    <label for="privacy-agree">我已閱讀並同意 <a href="#" onclick="alert('此處應彈出或導向隱私權條款全文'); return false;">隱私權條款</a>，並同意**訂閱 ANA 電子報**以完成活動參加資格。</label>
+                </div>
+                <button type="submit" class="btn-submit">同意提交 (取得抽獎資格)</button>
+            </form>
+        </div>
+    </div>
+</div>
 
-        let currentQuestion = 0;
-        let scores = {A:0, B:0, C:0, D:0};
+<footer>
+    版權所有 © 2025 去趣旅行.
+    <a href="#">服務條款</a> | 
+    <a href="#" onclick="alert('此處應彈出或導向隱私權政策全文'); return false;">隱私權政策</a>
+</footer>
 
-        const questionContainer = document.getElementById('question-container');
-        const nextButton = document.getElementById('next-button');
-        const progressFill = document.getElementById('progress-fill');
+<script>
+const gasScriptURL = "https://script.google.com/macros/s/AKfycbzqqQHaW4PA06xGxR8P6d8MriTNKTIB1RChKT6Kcvq4K5-gLj42NolofZuQJPLs5ajV/exec";
 
-        function showQuestion(index) {
-            const q = questions[index];
-            let html = `<div class="question-title">${q.title}</div>`;
-            q.choices.forEach((choice, idx) => {
-                const optionKey = ['A','B','C','D'][idx];
-                html += `<div class="option" data-key="${optionKey}">${choice}</div>`;
-            });
-            questionContainer.innerHTML = html;
+const questions = [
+    { id: 1, title: "Q1: 在規劃一趟期待已久的旅程時，你會：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 優先訂好最刺激、最特別的活動", "B. 仔細列出每日行程、交通方式", "C. 研究當地高評價的美食餐廳和酒吧", "D. 查詢當地的歷史文化、博物館"] },
+    { id: 2, title: "Q2: 你在旅程中對「時間」的掌握度是：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 隨性，邊走邊看，遲到也沒關係", "B. 嚴格，一切按表定時間進行", "C. 寬鬆，只要能吃到飯、買到東西就好", "D. 彈性，會因天氣或意外的風景而調整"] },
+    { id: 3, title: "Q3: 旅途中的住宿地點，你最重視什麼？", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 最好是帳篷、民宿或特色膠囊旅館", "B. 交通便利、設施齊全、提供 Wi-Fi", "C. 擁有美麗的泳池、奢華的浴缸", "D. 靠近市中心或歷史古城區"] },
+    { id: 4, title: "Q4: 你的旅費預算分配通常是：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 大部分花在體驗活動和紀念品上", "B. 主要花在交通和保險，盡量節省", "C. 大部分花在美食、購物和享受設施", "D. 願意花錢在導遊或深度遊覽行程上"] },
+    { id: 5, title: "Q5: 當旅途中遇到突發狀況 (如：航班延誤) 時，你會：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 感到興奮，這才是旅行的樂趣所在！", "B. 立即打開手機，尋找所有可能的解決方案", "C. 先找個咖啡廳休息，把不愉快拋諸腦後", "D. 趁機去附近看看意外的風景或景點"] },
+    { id: 6, title: "Q6: 你在旅行中拍照的重點是：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 獨特的風景或挑戰成功的那一刻", "B. 所有重要的地標，整齊排列在相簿中", "C. 美食擺盤、時尚的穿搭、網美景點", "D. 具有當地特色的人文街景和建築細節"] },
+    { id: 7, title: "Q7: 如果一天中沒有安排任何行程，你會：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 隨便找個地方探險或嘗試當地交通", "B. 焦慮不安，立刻上網搜尋下一步怎麼辦", "C. 睡到自然醒，然後享受一頓豐盛的早午餐", "D. 找間書店或咖啡廳，觀察當地人的生活"] },
+    { id: 8, title: "Q8: 關於行程中的「餐飲」，你的態度是：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 吃當地人推薦的街邊攤或特色小店", "B. 找附近最方便、快速解決的一餐", "C. 優先選擇評價高、環境好的餐廳或米其林", "D. 嘗試當地傳統食物，並了解其製作過程"] },
+    { id: 9, title: "Q9: 旅行前，你最喜歡看哪一類型的資料？", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 戶外探險 Youtuber 或背包客分享", "B. 旅遊達人的攻略、Excel 行程表範本", "C. 旅遊雜誌的飯店開箱或購物指南", "D. 國家地理頻道、歷史紀錄片"] },
+    { id: 10, title: "Q10: 結束一天的行程後，你的夜晚時間是：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 到處走走，尋找下一天的驚喜", "B. 整理照片、確認明天的交通時間", "C. 享受飯店設施，例如泡澡或去酒吧", "D. 寫下今天的見聞，整理文化筆記"] }
+];
 
-            const options = document.querySelectorAll('.option');
-            options.forEach(opt => {
-                opt.addEventListener('click', () => {
-                    options.forEach(o => o.classList.remove('selected'));
-                    opt.classList.add('selected');
-                    nextButton.disabled = false;
-                });
-            });
-            nextButton.disabled = true;
-        }
+const results = {
+    'A': { type: 'A. 刺激的冒險家', desc: "未知」才是你旅行最大的樂趣。你不喜歡被時間表束縛，比起舒適的飯店，你更愛充滿故事的青旅或露營...", advice: "給你的建議：試著在出發前至少確認好第一晚的住宿和基本的保險資訊，讓冒險更有保障！" },
+    'B': { type: 'B. 嚴謹的規劃控', desc: "你是旅行團體中的靈魂人物，所有行程都必須在你的 Excel 表格中，一切都在掌握之中...", advice: "給你的建議：試著在你的行程表上留出一個小時的「空白時間」，給自己一個隨心所欲的機會。" },
+    'C': { type: 'C. 盡情的享樂主義者', desc: "旅行對你來說，是從日常壓力中解脫的最好方式。你喜歡優質的住宿、高水準的美食和購物體驗...", advice: "給你的建議：下次可以試著將「美食」的預算，分配一部分到「獨特體驗」上，讓快樂延續到回家後。" },
+    'D': { type: 'D. 內斂的文化探索家', desc: "你是個深度旅行者，比起打卡景點，你更熱衷於了解一個地方的歷史、文化和社會現狀...", advice: "給你的建議：下次可以試著多拍一些「人像照」，把你在旅途中觀察到的生動畫面和當地的故事，透過你的鏡頭傳達給更多人。" }
+};
 
-        nextButton.addEventListener('click', () => {
-            const selected = document.querySelector('.option.selected');
-            const key = selected.getAttribute('data-key');
-            scores[key] += 1;
+let currentQuestionIndex = 0;
+let totalScore = 0;
+const answers = {};
 
-            currentQuestion += 1;
-            progressFill.style.width = `${(currentQuestion / questions.length)*100}%`;
+const questionContainer = document.getElementById('question-container');
+const nextButton = document.getElementById('next-button');
+const progressFill = document.getElementById('progress-fill');
+const quizSection = document.getElementById('quiz-section');
+const resultSection = document.getElementById('result-section');
+const resultTypeDiv = document.getElementById('result-type');
+const resultDetailDiv = document.getElementById('result-detail');
+const lotteryForm = document.getElementById('lottery-form');
 
-            if(currentQuestion < questions.length){
-                showQuestion(currentQuestion);
-            } else {
-                showResult();
-            }
+function renderQuestion() {
+    if (currentQuestionIndex >= questions.length) {
+        showResult();
+        return;
+    }
+
+    const q = questions[currentQuestionIndex];
+    const qNum = currentQuestionIndex + 1;
+    const optionsKeys = Object.keys(q.options);
+
+    let html = `<p class="question-title">第 ${qNum} 題 / 共 ${questions.length} 題</p>`;
+    html += `<p class="question-title">${q.title}</p>`;
+
+    q.choices.forEach((choiceText, index) => {
+        const choiceKey = optionsKeys[index]; 
+        html += `<div class="option" data-score-key="${choiceKey}">${choiceText}</div>`;
+    });
+
+    questionContainer.innerHTML = html;
+    updateProgress();
+
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', function() {
+            document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+            this.classList.add('selected');
+            nextButton.disabled = false;
+            answers[q.id] = this.getAttribute('data-score-key');
         });
+    });
 
-        function showResult() {
-            document.getElementById('quiz-section').classList.remove('active');
-            document.getElementById('result-section').classList.add('active');
+    nextButton.disabled = true;
+}
 
-            let maxScore = 0;
-            let resultKey = '';
-            for(let key in scores){
-                if(scores[key] > maxScore){
-                    maxScore = scores[key];
-                    resultKey = key;
-                }
-            }
-            document.getElementById('result-type').textContent = results[resultKey].type;
-            document.getElementById('result-detail').innerHTML = `
-                <div class="result-description">${results[resultKey].desc}</div>
-                <div class="result-advice">${results[resultKey].advice}</div>
+function updateProgress() {
+    const progress = (currentQuestionIndex / questions.length) * 100;
+    progressFill.style.width = progress + '%';
+}
+
+function showResult() {
+    totalScore = 0;
+    questions.forEach(q => {
+        const scoreKey = answers[q.id]; 
+        totalScore += q.options[scoreKey]; 
+    });
+
+    let resultKey;
+    if (totalScore >= 35) resultKey = 'A';
+    else if (totalScore >= 28) resultKey = 'D';
+    else if (totalScore >= 20) resultKey = 'C';
+    else resultKey = 'B';
+
+    const resultData = results[resultKey];
+
+    resultTypeDiv.textContent = `你是【${resultData.type}】類型！`;
+    resultDetailDiv.innerHTML = `
+        <p class="result-description"><strong>核心特質：</strong> ${resultData.desc}</p>
+        <p class="result-advice"><strong>行動建議：</strong> ${resultData.advice}</p>
+        <button style="margin: 10px 0; background-color: ${getComputedStyle(document.documentElement).getPropertyValue('--primary-blue')}; color: white;" class="btn-next" onclick="alert('分享功能待實作');">分享我的結果！</button>
+    `;
+
+    quizSection.classList.remove('active');
+    resultSection.classList.add('active');
+}
+
+nextButton.addEventListener('click', function() {
+    if (currentQuestionIndex < questions.length) {
+        currentQuestionIndex++;
+        renderQuestion();
+    }
+});
+
+lotteryForm.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    const formData = new FormData(this); 
+    const submitButton = document.querySelector('.btn-submit');
+    submitButton.disabled = true;
+    submitButton.textContent = '提交中...';
+
+    fetch(gasScriptURL, {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.result === 'success') {
+            const prizeSection = document.querySelector('.prize-section');
+            prizeSection.innerHTML = `
+                <h3 class="prize-title" style="color: green;">✅ 資料已成功提交！</h3>
+                <p>感謝您的參與，您已成功獲得抽獎資格。請隨時留意您的信箱通知。</p>
             `;
+        } else {
+            alert('提交失敗，請稍後再試。');
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('提交發生錯誤，請檢查網路連接。');
+    })
+    .finally(() => {
+        submitButton.disabled = false;
+        submitButton.textContent = '同意提交 (取得抽獎資格)';
+    });
+});
 
-        // 抽獎表單提交
-        const form = document.getElementById('lottery-form');
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            const formData = new FormData(form);
-            fetch(gasScriptURL, { method: 'POST', body: formData })
-                .then(response => response.text())
-                .then(data => alert('提交成功！感謝您的參加'))
-                .catch(error => alert('提交失敗，請稍後再試'));
-            form.reset();
-        });
+renderQuestion();
+</script>
 
-        // 初始化
-        showQuestion(currentQuestion);
-    </script>
 </body>
 </html>
