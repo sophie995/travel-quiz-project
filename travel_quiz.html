@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>測測你的旅行風格：理想旅伴測驗 | 去趣chicTrip</title>
+    <title>測測你的旅行風格：理想旅伴測驗 | 去趣</title>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS 變數定義：使用指定的配色 */
         :root {
-            --primary-blue: #00AEDC; /* 主色：深青色 (#00AEDC) */
-            --accent-yellow: #F9BE00; /* 強調色：亮黃色 (#F9BE00) */
+            --primary-blue: #00AEDC;
+            --accent-yellow: #F9BE00;
             --text-dark: #1C1C1C;
             --bg-light: #FAFAFA;
             --font-main: 'Zen Kaku Gothic Antique', 'Microsoft YaHei', sans-serif;
         }
-
-        /* 全域樣式 */
         body {
             font-family: var(--font-main);
             background-color: var(--bg-light);
@@ -27,7 +24,6 @@
             flex-direction: column;
             align-items: center;
         }
-
         .container {
             width: 100%;
             max-width: 700px;
@@ -37,8 +33,6 @@
             margin: 20px 0;
             border-radius: 12px;
         }
-
-        /* 頁首與 LOGO */
         header {
             width: 100%;
             padding: 20px 0;
@@ -47,7 +41,6 @@
             color: white;
             margin-bottom: 20px;
         }
-
         h1 {
             font-size: 28px;
             font-weight: 700;
@@ -63,8 +56,6 @@
             font-weight: 700;
             margin-bottom: 10px;
         }
-
-        /* 內容區塊 */
         .section {
             display: none; 
             padding: 20px 0;
@@ -72,8 +63,6 @@
         .section.active {
             display: block;
         }
-
-        /* 進度條 */
         .progress-bar {
             height: 8px;
             background-color: #E0E0E0;
@@ -87,15 +76,12 @@
             background-color: var(--accent-yellow);
             transition: width 0.3s ease-in-out;
         }
-
-        /* 測驗題目與選項 */
         .question-title {
             font-size: 20px;
             font-weight: 700;
             margin-bottom: 15px;
             color: var(--text-dark);
         }
-
         .option {
             display: block;
             background-color: var(--bg-light);
@@ -106,18 +92,14 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-
         .option:hover {
             border-color: var(--primary-blue);
         }
-
         .option.selected {
             background-color: #E8F5FF; 
             border-color: var(--accent-yellow);
             box-shadow: 0 0 5px rgba(249, 190, 0, 0.5);
         }
-
-        /* 按鈕 */
         .btn-next, .btn-submit {
             padding: 12px 25px;
             background-color: var(--accent-yellow);
@@ -131,12 +113,9 @@
             margin-top: 20px;
             width: 100%;
         }
-
         .btn-next:hover, .btn-submit:hover {
             background-color: #E6AD00;
         }
-
-        /* 結果區塊 */
         .result-title {
             color: var(--primary-blue);
             font-size: 24px;
@@ -157,8 +136,6 @@
             margin-bottom: 15px;
             background-color: var(--bg-light);
         }
-
-        /* 抽獎表單區塊 */
         .prize-section {
             background-color: #E8F5FF; 
             padding: 30px;
@@ -184,8 +161,6 @@
             font-weight: 700;
             margin-top: 15px;
         }
-
-        /* 表單樣式 */
         .form-group {
             margin-bottom: 15px;
         }
@@ -203,8 +178,6 @@
             border-radius: 5px;
             font-family: var(--font-main);
         }
-        
-        /* 隱私權勾選 */
         .privacy-check {
             font-size: 14px;
             margin-top: 20px;
@@ -217,8 +190,6 @@
         .privacy-check input[type="checkbox"] {
             margin-right: 5px;
         }
-
-        /* 頁尾 */
         footer {
             width: 100%;
             text-align: center;
@@ -235,9 +206,8 @@
     </style>
 </head>
 <body>
-
     <header>
-        <div class="logo">chicTrip 去趣chicTrip</div>
+        <div class="logo">去趣chicTrip</div>
         <h1>測測你的旅行風格：你是哪一種「理想旅伴」？</h1>
         <h2>僅需 3 分鐘，10 題核心問答，揭開你的旅行 DNA！</h2>
     </header>
@@ -246,34 +216,25 @@
         <div id="quiz-section" class="section active">
             <p>接下來，請根據你最真實的直覺選擇答案，沒有對錯之分。</p>
             <div class="progress-bar"><div id="progress-fill" class="progress-bar-fill"></div></div>
-            
-            <div id="question-container">
-                </div>
-            
+            <div id="question-container"></div>
             <button id="next-button" class="btn-next" disabled>下一題</button>
         </div>
 
         <div id="result-section" class="section">
             <h3 class="result-title">【測驗結果揭曉！】</h3>
             <div id="result-type" class="result-type"></div>
-            
-            <div id="result-detail">
-                </div>
+            <div id="result-detail"></div>
 
             <div class="prize-section">
                 <h3 class="prize-title">🎊 恭喜完成測驗！免費參加【豪華旅行抽獎活動】！</h3>
                 <p>感謝您的參與！只要完成下方資訊填寫並提交，即可獲得抽獎資格。</p>
-
                 <ul class="prize-list">
-                    <li>🏆 **頭獎：** <strong style="color: var(--accent-yellow);">ANA 東京來回機票 (共 3 組)</strong></li>
-                    <li>🎁 **二獎：** 去趣旅行周邊商品 (共 30 名)</li>
-                    <li>✨ **三獎：** 和泰 Points 300 點 (共 20 名)</li>
+                    <li>🏆 <strong>頭獎：</strong> ANA 東京來回機票 (共 3 組)</li>
+                    <li>🎁 二獎：去趣旅行周邊商品 (共 30 名)</li>
+                    <li>✨ 三獎：和泰 Points 300 點 (共 20 名)</li>
                 </ul>
-
-                <p class="prize-note">※ 參加活動需同意訂閱 ANA 電子報，中獎者將以電子報訂閱信箱進行通知。</p>
-
+                <p class="prize-note">※ 參加活動需同意訂閱 ANA 電子報，中獎者將以電子報訂閱信箱通知。</p>
                 <hr style="border-top: 1px solid #B0E0FF; margin: 20px 0;">
-
                 <form id="lottery-form">
                     <h3 class="prize-title" style="color: var(--text-dark);">填寫抽獎聯絡方式</h3>
                     <div class="form-group">
@@ -288,17 +249,14 @@
                         <label for="phone">聯繫電話:</label>
                         <input type="tel" id="phone" name="phone" required>
                     </div>
-
                     <div class="privacy-check">
                         <input type="checkbox" id="privacy-agree" required>
                         <label for="privacy-agree">我已閱讀並同意 <a href="#" onclick="alert('此處應彈出或導向隱私權條款全文'); return false;">隱私權條款</a>，並同意**訂閱 ANA 電子報**以完成活動參加資格。</label>
                     </div>
-
                     <button type="submit" class="btn-submit">同意提交 (取得抽獎資格)</button>
                 </form>
             </div>
         </div>
-
     </div>
 
     <footer>
@@ -307,10 +265,7 @@
     </footer>
 
     <script>
-        // JavaScript 程式碼：計分與流程控制
-
-        // **重要：您的 Google Apps Script 部署 URL (資料提交終點)**
-        const gasScriptURL = "https://script.google.com/macros/s/AKfycbzMspphcUOWt0QqKTrJhY5pNClyfuxkpKW1Bk1nupQd32wJi8nPmfDD5Nv51H--3rbp/exec"; 
+        const gasScriptURL = "https://script.google.com/macros/s/AKfycbxyYhR04jcAQIvMuL-6FgZLRBf5CYVTSLlaLnBfUjgLVdG6nnLA5fytsBEP0cQWmg-PtA/exec";
 
         const questions = [
             { id: 1, title: "Q1: 在規劃一趟期待已久的旅程時，你會：", options: { A: 4, B: 1, C: 2, D: 3 }, choices: ["A. 優先訂好最刺激、最特別的活動", "B. 仔細列出每日行程、交通方式", "C. 研究當地高評價的美食餐廳和酒吧", "D. 查詢當地的歷史文化、博物館"] },
@@ -326,153 +281,87 @@
         ];
 
         const results = {
-            'A': { type: 'A. 刺激的冒險家', desc: "未知」才是你旅行最大的樂趣。你不喜歡被時間表束縛，比起舒適的飯店，你更愛充滿故事的青旅或露營...", advice: "給你的建議：試著在出發前至少確認好第一晚的住宿和基本的保險資訊，讓冒險更有保障！" },
+            'A': { type: 'A. 刺激的冒險家', desc: "未知才是你旅行最大的樂趣。你不喜歡被時間表束縛，比起舒適的飯店，你更愛充滿故事的青旅或露營...", advice: "給你的建議：試著在出發前至少確認好第一晚的住宿和基本的保險資訊，讓冒險更有保障！" },
             'B': { type: 'B. 嚴謹的規劃控', desc: "你是旅行團體中的靈魂人物，所有行程都必須在你的 Excel 表格中，一切都在掌握之中...", advice: "給你的建議：試著在你的行程表上留出一個小時的「空白時間」，給自己一個隨心所欲的機會。" },
             'C': { type: 'C. 盡情的享樂主義者', desc: "旅行對你來說，是從日常壓力中解脫的最好方式。你喜歡優質的住宿、高水準的美食和購物體驗...", advice: "給你的建議：下次可以試著將「美食」的預算，分配一部分到「獨特體驗」上，讓快樂延續到回家後。" },
-            'D': { type: 'D. 內斂的文化探索家', desc: "你是個深度旅行者，比起打卡景點，你更熱衷於了解一個地方的歷史、文化和社會現狀...", advice: "給你的建議：下次可以試著多拍一些「人像照」，把你在旅途中觀察到的生動畫面和當地的故事，透過你的鏡頭傳達給更多人。" }
+            'D': { type: 'D. 深度文化觀察者', desc: "你對文化、人文、歷史的熱情勝過一般旅人，你喜歡博物館、老街、當地藝術活動...", advice: "給你的建議：可以挑戰用當地語言與人交流，這將讓你的旅行更有深度與趣味。" }
         };
 
-        let currentQuestionIndex = 0;
-        let totalScore = 0;
-        const answers = {};
+        let currentQuestion = 0;
+        let scores = {A:0, B:0, C:0, D:0};
 
         const questionContainer = document.getElementById('question-container');
         const nextButton = document.getElementById('next-button');
         const progressFill = document.getElementById('progress-fill');
-        const quizSection = document.getElementById('quiz-section');
-        const resultSection = document.getElementById('result-section');
-        const resultTypeDiv = document.getElementById('result-type');
-        const resultDetailDiv = document.getElementById('result-detail');
-        const lotteryForm = document.getElementById('lottery-form');
 
-        // 渲染當前題目
-        function renderQuestion() {
-            if (currentQuestionIndex >= questions.length) {
-                showResult();
-                return;
-            }
-
-            const q = questions[currentQuestionIndex];
-            const qNum = currentQuestionIndex + 1;
-            const optionsKeys = Object.keys(q.options);
-            
-            let html = `<p class="question-title">第 ${qNum} 題 / 共 ${questions.length} 題</p>`;
-            html += `<p class="question-title">${q.title}</p>`;
-            
-            q.choices.forEach((choiceText, index) => {
-                const choiceKey = optionsKeys[index]; 
-                html += `<div class="option" data-score-key="${choiceKey}">${choiceText}</div>`;
+        function showQuestion(index) {
+            const q = questions[index];
+            let html = `<div class="question-title">${q.title}</div>`;
+            q.choices.forEach((choice, idx) => {
+                const optionKey = ['A','B','C','D'][idx];
+                html += `<div class="option" data-key="${optionKey}">${choice}</div>`;
             });
-            
             questionContainer.innerHTML = html;
-            updateProgress();
-            
-            // 監聽選項點擊
-            document.querySelectorAll('.option').forEach(option => {
-                option.addEventListener('click', function() {
-                    document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-                    this.classList.add('selected');
+
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    options.forEach(o => o.classList.remove('selected'));
+                    opt.classList.add('selected');
                     nextButton.disabled = false;
-                    answers[q.id] = this.getAttribute('data-score-key'); 
                 });
             });
-            
-            nextButton.disabled = true; 
+            nextButton.disabled = true;
         }
 
-        // 更新進度條
-        function updateProgress() {
-            const progress = (currentQuestionIndex / questions.length) * 100;
-            progressFill.style.width = progress + '%';
-        }
+        nextButton.addEventListener('click', () => {
+            const selected = document.querySelector('.option.selected');
+            const key = selected.getAttribute('data-key');
+            scores[key] += 1;
 
-        // 計算分數並顯示結果
-        function showResult() {
-            totalScore = 0;
-            questions.forEach(q => {
-                const scoreKey = answers[q.id]; 
-                totalScore += q.options[scoreKey]; 
-            });
+            currentQuestion += 1;
+            progressFill.style.width = `${(currentQuestion / questions.length)*100}%`;
 
-            // 判斷類型 (與規格書一致)
-            let resultKey;
-            if (totalScore >= 35) {
-                resultKey = 'A'; // 35-40: 冒險家
-            } else if (totalScore >= 28) {
-                resultKey = 'D'; // 28-34: 文化探索家
-            } else if (totalScore >= 20) {
-                resultKey = 'C'; // 20-27: 享樂主義者
+            if(currentQuestion < questions.length){
+                showQuestion(currentQuestion);
             } else {
-                resultKey = 'B'; // 10-19: 規劃控
+                showResult();
             }
-            
-            const resultData = results[resultKey];
+        });
 
-            // 渲染結果內容
-            resultTypeDiv.textContent = `你是【${resultData.type}】類型！`;
-            resultDetailDiv.innerHTML = `
-                <p class="result-description"><strong>核心特質：</strong> ${resultData.desc}</p>
-                <p class="result-advice"><strong>行動建議：</strong> ${resultData.advice}</p>
-                <button style="margin: 10px 0; background-color: ${getComputedStyle(document.documentElement).getPropertyValue('--primary-blue')}; color: white;" class="btn-next" onclick="alert('分享功能待實作');">分享我的結果！</button>
+        function showResult() {
+            document.getElementById('quiz-section').classList.remove('active');
+            document.getElementById('result-section').classList.add('active');
+
+            let maxScore = 0;
+            let resultKey = '';
+            for(let key in scores){
+                if(scores[key] > maxScore){
+                    maxScore = scores[key];
+                    resultKey = key;
+                }
+            }
+            document.getElementById('result-type').textContent = results[resultKey].type;
+            document.getElementById('result-detail').innerHTML = `
+                <div class="result-description">${results[resultKey].desc}</div>
+                <div class="result-advice">${results[resultKey].advice}</div>
             `;
-
-            // 切換頁面
-            quizSection.classList.remove('active');
-            resultSection.classList.add('active');
         }
 
-        // 監聽「下一題」按鈕
-        nextButton.addEventListener('click', function() {
-            if (currentQuestionIndex < questions.length) {
-                currentQuestionIndex++;
-                renderQuestion();
-            }
+        // 抽獎表單提交
+        const form = document.getElementById('lottery-form');
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            fetch(gasScriptURL, { method: 'POST', body: formData })
+                .then(response => response.text())
+                .then(data => alert('提交成功！感謝您的參加'))
+                .catch(error => alert('提交失敗，請稍後再試'));
+            form.reset();
         });
 
-        // ** GAS 提交邏輯：處理表單提交並發送到 Apps Script **
-        lotteryForm.addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            
-            const formData = new FormData(this); 
-            
-            // 禁用按鈕，防止重複提交
-            const submitButton = document.querySelector('.btn-submit');
-            submitButton.disabled = true;
-            submitButton.textContent = '提交中...';
-
-            // 使用 Fetch API 提交數據到 Google Apps Script
-            fetch(gasScriptURL, {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.result === 'success') {
-                    // 提交成功，顯示感謝訊息
-                    const prizeSection = document.querySelector('.prize-section');
-                    prizeSection.innerHTML = `
-                        <h3 class="prize-title" style="color: green;">✅ 資料已成功提交！</h3>
-                        <p>感謝您的參與，您已成功獲得抽獎資格。請隨時留意您的信箱通知。</p>
-                    `;
-                } else {
-                    alert('提交失敗，請稍後再試。');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('提交發生錯誤，請檢查網路連接。');
-            })
-            .finally(() => {
-                // 恢復按鈕狀態 (如果提交成功，此行不會執行，因為 prizeSection 內容已被替換)
-                submitButton.disabled = false;
-                submitButton.textContent = '同意提交 (取得抽獎資格)';
-            });
-        });
-
-        // 首次載入
-        renderQuestion();
+        // 初始化
+        showQuestion(currentQuestion);
     </script>
-
 </body>
 </html>
-
